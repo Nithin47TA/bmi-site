@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="M Aswin Kishore, Nithin TA, Basil Benny"
+    />
+    <meta name="generator" content="Hugo 0.98.0" />
+    <title>Result</title>
+    {% load static %}
+
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.2/examples/jumbotron/"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'bmi/result.css' %}"
+    />
+    <meta name="theme-color" content="#712cf9" />
+  </head>
+  <body>
+    <main>
+      <div class="container py-4">
+        <header class="pb-3 mb-4 border-bottom">
+          <a
+            href="/bmi"
+            class="d-flex align-items-center text-dark text-decoration-none"
+          >
+            <img src={% static 'bmi/images/deco.jpg' %} width="30" height="30"
+            class="me-2" viewBox="0 0 118 94" role="img" >
+            <span class="fs-4">Your Result</span>
+          </a>
+        </header>
+
+        <div class="p-5 mb-4 bg-light rounded-3">
+          <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">BMI</h1>
+            <p class="col-md-8 fs-4">{{ bmi }}</p>
+            <form action="/">
+              <button class="btn btn-primary btn-lg" type="submit">
+                Go Home <<
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="row align-items-md-stretch">
+          <div class="col-md-6">
+            <div class="h-100 p-5 text-white bg-dark rounded-3">
+              {% if error %}
+              <h2>!</h2>
+              {% else %}
+              <h2>You Are</h2>
+              {% endif %}
+              <p>{{ category }}</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="h-100 p-5 bg-light border rounded-3">
+              <h2>Your Ideal Weight</h2>
+              <p>{{ healthy_weight }} Kg</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

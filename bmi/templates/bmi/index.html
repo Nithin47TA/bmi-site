@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="M Aswin Kishore, Nithin TA, Basil Benny"
+    />
+    <meta name="generator" content="Hugo 0.98.0" />
+    <title>BMI</title>
+    {% load static %}
+
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.2/examples/checkout/"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'bmi/style.css' %}"
+    />
+
+    <!-- Favicons -->
+    <link
+      rel="apple-touch-icon"
+      href="/docs/5.2/assets/img/favicons/apple-touch-icon.png"
+      sizes="180x180"
+    />
+    <link
+      rel="icon"
+      href="/docs/5.2/assets/img/favicons/favicon-32x32.png"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="/docs/5.2/assets/img/favicons/favicon-16x16.png"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json" />
+    <link
+      rel="mask-icon"
+      href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg"
+      color="#712cf9"
+    />
+    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico" />
+    <meta name="theme-color" content="#712cf9" />
+  </head>
+
+  <body class="bg-light">
+    <div class="container">
+      <main>
+        <div class="py-5 text-center">
+          <img class="d-block mx-auto mb-4" src={% static 'bmi/images/logo.jpg' %} alt="" width="200" height="200" />
+          <h2>BMI Calculator</h2>
+        </div>
+        <div class="row g-5">
+          <div class="col-md-5 col-lg-4 order-md-last">
+            <h4 class="text-center mb-3">
+              <span class="text-primary">BMI Indexes</span>
+            </h4>
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between lh-lg">
+                <div class="text-primary">
+                  <h6 class="my-2">UNDERWEIGHT</h6>
+                </div>
+                <span class="text-primary">&lt;18.5</span>
+              </li>
+              <li
+                class="list-group-item d-flex justify-content-between lh-lg bg-light"
+              >
+                <div class="text-success">
+                  <h6 class="my-2">NORMAL</h6>
+                </div>
+                <span class="text-success">18.5-24.9</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between lh-lg">
+                <div class="text-warning">
+                  <h6 class="my-2">OVERWEIGHT</h6>
+                </div>
+                <span class="text-warning">25-29.9</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <div class="text-danger">
+                  <h6 class="my-2">OBESE</h6>
+                </div>
+                <span class="text-danger">30-34.9</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span class="text-dark">EXTREMELY OBESE</span>
+                <strong>35&lt;</strong>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-7 col-lg-8">
+            <h4 class="mb-3" id="here">
+              Please Provide The Following Information
+            </h4>
+
+            <!-- HERE IS THE FORM CODE -->
+
+            <form
+              class="needs-validation"
+              novalidate
+              action="{% url 'bmi:find'%}"
+              method="post"
+            >
+              {% csrf_token %}
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <label for="firstName" class="form-label">First name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="firstName"
+                    id="firstName"
+                    placeholder=""
+                    value=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Valid first name is required.
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <label for="lastName" class="form-label">Last name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    name="lastName"
+                    placeholder=""
+                    value=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Valid last name is required.
+                  </div>
+                </div>
+              </div>
+              <br />
+              <span class="mb-3">Gender</span>
+
+              <div class="my-3">
+                <div class="form-check">
+                  <input
+                    id="credit"
+                    name="gender"
+                    type="radio"
+                    class="form-check-input"
+                    checked
+                    required
+                  />
+                  <label class="form-check-label" for="credit">Male</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    id="debit"
+                    name="gender"
+                    type="radio"
+                    class="form-check-input"
+                    required
+                  />
+                  <label class="form-check-label" for="debit">Female</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    id="paypal"
+                    name="gender"
+                    type="radio"
+                    class="form-check-input"
+                    required
+                  />
+                  <label class="form-check-label" for="paypal">Other</label>
+                </div>
+              </div>
+
+              <div class="row gy-3">
+                <div class="col-md-6">
+                  <label for="cc-name" class="form-label">Height</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="cc-name"
+                    name="height"
+                    step="0.01"
+                    placeholder=""
+                    required
+                  />
+                  <small class="text-muted">Enter in meter units</small>
+                  <div class="invalid-feedback">Name on card is required</div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="cc-number" class="form-label">Weight</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="cc-number"
+                    name="weight"
+                    placeholder=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Credit card number is required
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <button class="w-100 btn btn-primary btn-lg" type="submit">
+                Calculate BMI
+              </button>
+            </form>
+          </div>
+        </div>
+      </main>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; M Aswin Kishore | Nithin T A | Basil Benny</p>
+      </footer>
+    </div>
+
+    <script
+      src="/docs/5.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      document.getElementById("here").scrollIntoView();
+    </script>
+    <script src="form-validation.js"></script>
+  </body>
+</html>
